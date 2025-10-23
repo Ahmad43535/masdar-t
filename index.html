@@ -3,12 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>مصدر للتحول الرقمي وتكنولوجيا المعلومات</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             box-sizing: border-box;
+            overflow-x: hidden;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
         }
 
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap');
@@ -171,6 +177,56 @@
         .bg-gradient-radial {
             background: radial-gradient(circle, var(--tw-gradient-stops));
         }
+
+        /* Responsive Media Queries */
+        @media (max-width: 768px) {
+            .card-hover {
+                transform: none !important;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+            
+            .country-card, .client-card {
+                transform: none !important;
+            }
+            
+            .service-icon:hover {
+                transform: scale(1.1) !important;
+            }
+            
+            .grid {
+                gap: 1.5rem !important;
+            }
+            
+            section {
+                padding-top: 2rem !important;
+                padding-bottom: 2rem !important;
+            }
+            
+            .text-center-mobile {
+                text-align: center !important;
+            }
+            
+            .flex-col-mobile {
+                flex-direction: column !important;
+            }
+            
+            .w-full-mobile {
+                width: 100% !important;
+            }
+            
+            .mx-auto-mobile {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            .mb-6-mobile {
+                margin-bottom: 1.5rem !important;
+            }
+            
+            .p-4-mobile {
+                padding: 1rem !important;
+            }
+        }
     </style>
 </head>
 
@@ -178,16 +234,17 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
+            <div class="flex justify-between items-center h-16 sm:h-20 md:h-24">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
                         <img src="https://i.ibb.co/S4GwfXdq/image.png" alt="مصدر للتحول الرقمي"
-                            class="h-28 w-auto logo-interactive cursor-pointer"
+                            class="h-16 sm:h-20 md:h-28 w-auto logo-interactive cursor-pointer"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                        <h1 class="text-4xl font-bold text-indigo-600 logo-interactive cursor-pointer"
+                        <h1 class="text-3xl sm:text-4xl font-bold text-indigo-600 logo-interactive cursor-pointer"
                             style="display: none;">مصدر</h1>
                     </div>
                 </div>
+                <!-- Desktop Navigation -->
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4 space-x-reverse">
                         <a href="#home"
@@ -207,34 +264,62 @@
                             معنا</a>
                     </div>
                 </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="md:hidden hidden">
+                <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white rounded-b-lg shadow-lg">
+                    <a href="#home"
+                        class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors">الرئيسية</a>
+                    <a href="#about"
+                        class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors">من
+                        نحن</a>
+                    <a href="#services"
+                        class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors">خدماتنا</a>
+                    <a href="#portfolio"
+                        class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors">أعمالنا</a>
+                    <a href="#clients"
+                        class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors">عملاؤنا
+                        المميزون</a>
+                    <a href="#contact"
+                        class="block text-gray-700 hover:text-indigo-600 px-3 py-2 rounded-md text-base font-medium transition-colors">تواصل
+                        معنا</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="gradient-bg min-h-full pt-16 flex items-center">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="text-white">
-                    <h1 class="text-5xl font-bold mb-6 leading-tight">
+    <section id="home" class="gradient-bg min-h-full pt-24 md:pt-16 flex items-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-20">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="text-white text-center lg:text-right">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 leading-tight">
                         مصدر للتحول الرقمي
                         <span class="block text-yellow-300">وتكنولوجيا المعلومات</span>
                     </h1>
-                    <p class="text-xl mb-8 text-gray-100 leading-relaxed">
+                    <p class="text-lg sm:text-xl mb-6 sm:mb-8 text-gray-100 leading-relaxed">
                         شركة ناشئة متخصصة في تطوير حلول DevOps وSaaS المتقدمة لتمكين الشركات من مواكبة التحول الرقمي
                     </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-end">
                         <button onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})"
-                            class="bg-yellow-400 text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors">
+                            class="bg-yellow-400 text-gray-900 px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-yellow-300 transition-colors w-full sm:w-auto">
                             اكتشف خدماتنا
                         </button>
                         <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})"
-                            class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+                            class="border-2 border-white text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors w-full sm:w-auto">
                             تواصل معنا
                         </button>
                     </div>
                 </div>
-                <div class="animate-float flex justify-center items-center">
+                <div class="animate-float flex justify-center items-center mt-8 lg:mt-0">
                     <div class="relative" id="heroLogoContainer">
                         <!-- Soft white gradient background -->
                         <div
@@ -248,16 +333,16 @@
                         </div>
 
                         <!-- Logo container -->
-                        <div class="relative p-8">
+                        <div class="relative p-4 sm:p-6 md:p-8">
                             <img src="https://i.ibb.co/S4GwfXdq/image.png" alt="مصدر للتحول الرقمي"
-                                class="h-96 w-auto mx-auto logo-interactive cursor-pointer transform hover:scale-110 transition-all duration-500 relative z-10"
+                                class="h-48 sm:h-64 md:h-80 lg:h-96 w-auto mx-auto logo-interactive cursor-pointer transform hover:scale-110 transition-all duration-500 relative z-10"
                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
 
                             <!-- Fallback logo -->
-                            <div class="h-96 w-96 flex items-center justify-center logo-interactive cursor-pointer transform hover:scale-110 transition-all duration-500 relative z-10"
+                            <div class="h-48 sm:h-64 md:h-80 lg:h-96 w-auto flex items-center justify-center logo-interactive cursor-pointer transform hover:scale-110 transition-all duration-500 relative z-10"
                                 style="display: none;">
                                 <h1
-                                    class="text-9xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                                    class="text-5xl sm:text-6xl md:text-7xl lg:text-9xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                                     مصدر</h1>
                             </div>
                         </div>
@@ -340,13 +425,13 @@
 
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
+    <section id="about" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-indigo-50 to-purple-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold text-gray-900 mb-4">من نحن 🧩</h2>
+            <div class="text-center mb-10 sm:mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">من نحن 🧩</h2>
                 <div class="max-w-4xl mx-auto">
-                    <h3 class="text-2xl font-bold text-indigo-600 mb-6">Masder for Digital Transformation & IT</h3>
-                    <div class="space-y-4 text-lg text-gray-700 leading-relaxed">
+                    <h3 class="text-xl sm:text-2xl font-bold text-indigo-600 mb-4 sm:mb-6">Masder for Digital Transformation & IT</h3>
+                    <div class="space-y-3 sm:space-y-4 text-base sm:text-lg text-gray-700 leading-relaxed px-2 sm:px-0">
                         <p>
                             نحن شركة تقنية متخصصة في تطوير حلول DevOps & SaaS ودمج نظام Odoo لخدمة المؤسسات والشركات في
                             مجالات المحاسبة، التجارة، والتكنولوجيا.
@@ -364,7 +449,7 @@
             </div>
 
             <!-- Vision, Mission, Values Grid -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-10 sm:mb-16">
                 <!-- Vision -->
                 <div class="bg-white p-8 rounded-xl shadow-lg card-hover border-t-4 border-indigo-500">
                     <div class="flex items-center mb-6">
@@ -1615,6 +1700,25 @@
         });
     </script>
     <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9929619bc1b7ae33',t:'MTc2MTE0MDE2Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            // Toggle mobile menu
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Close mobile menu when clicking on a link
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
 </body>
-
 </html>
